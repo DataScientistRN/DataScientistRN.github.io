@@ -3,6 +3,8 @@ title: Hospital Readmissions in Diabetic Patients
 summary: Exploratory analysis of 25,000 patient records from 130 hospitals to find what drives 30-day readmissions among patients with diabetes.
 tags: [EDA, Statistics, Healthcare]
 github: https://github.com/DataScientistRN/Exploring-hospital-readmissions-Fall-2025
+icon: chart
+color: butter
 order: 4
 ---
 

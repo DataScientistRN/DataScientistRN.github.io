@@ -3,6 +3,8 @@ title: Brain Tumor Classification with CNNs
 summary: A custom convolutional neural network that classifies brain MRIs as glioma, meningioma, pituitary tumor or normal with 97% accuracy, served through a Flask web app.
 tags: [Deep Learning, CNN, TensorFlow, Flask]
 github: https://github.com/DataScientistRN/Brain-Tumor-Classification-with-CNN-Fall-2025
+icon: brain
+color: mint
 order: 3
 ---
 
