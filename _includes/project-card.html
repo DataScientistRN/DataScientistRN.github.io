@@ -1,0 +1,23 @@
+<article class="project-card">
+  <a class="project-card__thumb" href="{{ include.project.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    {%- if include.project.image -%}
+      <img src="{{ include.project.image | relative_url }}" alt="" loading="lazy">
+    {%- else -%}
+      <span class="project-card__initial">{{ include.project.title | slice: 0 }}</span>
+    {%- endif -%}
+  </a>
+  <div class="project-card__body">
+    <h2 class="project-card__title"><a href="{{ include.project.url | relative_url }}">{{ include.project.title }}</a></h2>
+    {%- if include.project.summary %}<p class="project-card__summary">{{ include.project.summary }}</p>{% endif -%}
+    {%- if include.project.tags %}
+    <ul class="project-card__tags">
+      {%- for tag in include.project.tags %}<li>{{ tag }}</li>{% endfor -%}
+    </ul>
+    {%- endif %}
+    <p class="project-card__links">
+      <a href="{{ include.project.url | relative_url }}">Read more</a>
+      {%- if include.project.github %} <a href="{{ include.project.github }}">Code</a>{% endif -%}
+      {%- if include.project.demo %} <a href="{{ include.project.demo }}">Demo</a>{% endif -%}
+    </p>
+  </div>
+</article>
