@@ -5,6 +5,7 @@ tags: [Computer Vision, YOLO26, SAM2, PyTorch]
 github: https://github.com/DataScientistRN/Surgical-Tool-Instance-Segmentation-Spring-2026
 icon: scalpel
 color: peach
+html: /notebooks/surgical-tool-segmentation.html
 order: 1
 ---
 

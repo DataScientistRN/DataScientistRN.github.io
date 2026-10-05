@@ -1,4 +1,5 @@
-<a class="project-card project-card--{{ include.project.color | default: 'peach' }}" href="{{ include.project.url | relative_url }}">
+{%- assign card_link = include.project.html | default: include.project.url -%}
+<a class="project-card project-card--{{ include.project.color | default: 'peach' }}" href="{{ card_link | relative_url }}">
   <div class="project-card__thumb">
     {%- if include.project.image -%}
       <img src="{{ include.project.image | relative_url }}" alt="" loading="lazy">
