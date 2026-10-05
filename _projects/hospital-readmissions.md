@@ -5,6 +5,7 @@ tags: [EDA, Statistics, Healthcare]
 github: https://github.com/DataScientistRN/Exploring-hospital-readmissions-Fall-2025
 icon: chart
 color: butter
+html: /notebooks/hospital-readmissions.html
 order: 4
 ---
 

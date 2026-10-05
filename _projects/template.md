@@ -9,7 +9,8 @@ tags: [Python, Machine Learning]
 icon: chart        # shown when there's no image: brain, book, scalpel, chart, or leave blank for a star
 color: peach       # card color: peach, lavender, mint or butter
 github: https://github.com/DataScientistRN
-demo:             # optional link to a live app or notebook
+demo:             # optional link to a live app
+html:             # optional, e.g. /notebooks/my-project.html: the card opens this page instead of the write-up below
 order: 1          # lower numbers show first
 ---
 
