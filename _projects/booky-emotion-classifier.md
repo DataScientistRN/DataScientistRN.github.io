@@ -3,6 +3,8 @@ title: "Booky: Real-Time Emotion Classification"
 summary: A bidirectional LSTM trained from scratch on GoEmotions that labels the emotion of each page of a book as you read it.
 tags: [NLP, Keras, BiLSTM]
 github: https://github.com/DataScientistRN/BiLSTM-Emotion-Classifier-Summer-2026
+icon: book
+color: lavender
 order: 2
 ---
 

@@ -3,6 +3,8 @@ title: Surgical Tool Instance Segmentation
 summary: A YOLO26 + SAM2 pipeline that segments surgical instruments in laparoscopic gallbladder surgery video, outperforming the Mask R-CNN and Mask2Former baselines from the original study.
 tags: [Computer Vision, YOLO26, SAM2, PyTorch]
 github: https://github.com/DataScientistRN/Surgical-Tool-Instance-Segmentation-Spring-2026
+icon: scalpel
+color: peach
 order: 1
 ---
 

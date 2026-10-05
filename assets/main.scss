@@ -2,106 +2,306 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
+// Palette: deep navy night sky with soft pastel accents
+$navy:        #151b2f;
+$navy-2:      #1d2542;
+$navy-3:      #27325a;
+$ink:         #ece9f4;
+$ink-soft:    #aeb3cc;
+$peach:       #f7c6b3;
+$lavender:    #cbc4f2;
+$mint:        #b5e3cd;
+$butter:      #f4e1a1;
+
+$display-font: "Josefin Sans", "Avenir Next", "Segoe UI", sans-serif;
+$body-font:    "Nunito", "Segoe UI", system-ui, sans-serif;
+
+// Feed minima's base styles (code blocks, tables, lists) the dark palette
+$base-font-family: $body-font;
+$text-color:       $ink;
+$background-color: $navy;
+$brand-color:      $lavender;
+$grey-color:       $ink-soft;
+$grey-color-light: $navy-3;
+$grey-color-dark:  $ink-soft;
+
 @import "minima";
 
-// Projects grid: as many 280px+ columns as fit, one column on phones
+$accents: ("peach": $peach, "lavender": $lavender, "mint": $mint, "butter": $butter);
+
+body {
+  background: $navy;
+  color: $ink;
+  font-family: $body-font;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+a { color: $lavender; }
+a:hover { color: $peach; text-decoration: none; }
+a:focus-visible { outline: 2px solid $peach; outline-offset: 3px; border-radius: 4px; }
+
+// Layout: fixed sidebar on the left, content on the right; stacks on phones
+.shell {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,.12) 0 1.5px, transparent 2px) 0 0 / 46px 46px,
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.08) 0 1px, transparent 1.5px) 0 0 / 31px 31px,
+    linear-gradient(170deg, #1f4a55 0%, #18304a 55%, $navy 100%);
+}
+
+.sidebar__inner {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 72px 28px 40px;
+  text-align: center;
+}
+
+.sidebar__avatar {
+  display: grid;
+  place-items: center;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 3px solid $peach;
+  box-shadow: 0 0 0 8px rgba(247,198,179,.15);
+  background: $navy-2;
+  overflow: hidden;
+  margin-bottom: 14px;
+
+  span {
+    font: 700 40px/1 $display-font;
+    letter-spacing: .08em;
+    color: $peach;
+    padding-top: 6px;
+  }
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.sidebar__name {
+  font: 700 26px/1.2 $display-font;
+  letter-spacing: .06em;
+  margin: 0;
+}
+
+.sidebar__tagline {
+  margin: 0 0 18px;
+  color: $ink-soft;
+  font-size: 15px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+
+  a {
+    font: 600 15px $display-font;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: $ink;
+    padding: 6px 18px 4px;
+    border-radius: 999px;
+    transition: background .15s;
+  }
+  a:hover { background: rgba(255,255,255,.08); color: $ink; }
+  a[aria-current="page"] { background: $peach; color: $navy; }
+}
+
+.sidebar__social {
+  display: flex;
+  gap: 18px;
+  a { color: $ink; opacity: .85; }
+  a:hover { opacity: 1; color: $peach; }
+}
+
+.main {
+  padding: 72px clamp(20px, 5vw, 72px) 40px;
+  max-width: 1200px;
+  min-width: 0;
+}
+
+.page-title {
+  font: 700 clamp(32px, 4vw, 44px)/1.15 $display-font;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  padding-bottom: 14px;
+  display: inline-block;
+  border-bottom: 3px solid $peach;
+  text-wrap: balance;
+}
+
+.page-intro {
+  color: $ink-soft;
+  font-size: 19px;
+  margin: 14px 0 40px;
+  max-width: 60ch;
+}
+
+// Project grid
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-  margin-bottom: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 28px;
 }
 
 .project-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid $grey-color-light;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
-  background: #fff;
-  transition: transform .15s, box-shadow .15s;
+  background: $navy-2;
+  color: $navy;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  transition: transform .2s ease, box-shadow .2s ease;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+    color: $navy;
+    transform: translateY(-6px) rotate(-.4deg);
+    box-shadow: 0 18px 40px rgba(0,0,0,.35);
   }
+  &:hover .project-card__badge { transform: scale(1.06) rotate(4deg); }
 }
 
 .project-card__thumb {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16 / 9;
-  background: lighten($brand-color, 45%);
-  overflow: hidden;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.07) 0 2px, transparent 2.5px) 0 0 / 38px 38px,
+    $navy-2;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  img { width: 100%; height: 100%; object-fit: cover; }
 }
 
-.project-card__initial {
-  font-size: 48px;
-  font-weight: 700;
-  color: $brand-color;
+.project-card__badge {
+  display: grid;
+  place-items: center;
+  width: 46%;
+  aspect-ratio: 1;
+  border-radius: 46% 54% 52% 48% / 52% 44% 56% 48%;
+  border: 3px solid currentColor;
+  transition: transform .3s ease;
 }
 
-.project-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px;
+.project-icon { width: 62%; height: 62%; }
+
+.project-card__caption {
   flex: 1;
+  padding: 20px 22px 24px;
+  text-align: center;
 }
 
 .project-card__title {
-  font-size: 20px;
-  margin: 0;
-
-  a { color: $text-color; }
+  font: 700 17px/1.4 $display-font;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  text-wrap: balance;
 }
 
 .project-card__summary {
   margin: 0;
-  color: $grey-color-dark;
+  font-size: 15.5px;
+  line-height: 1.55;
+  opacity: .85;
 }
 
-.project-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  margin: auto 0 0;
-
-  li {
-    font-size: 13px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: lighten($brand-color, 45%);
-    color: $brand-color;
+@each $name, $color in $accents {
+  .project-card--#{$name} {
+    .project-card__caption { background: $color; }
+    .project-card__badge { color: $color; background: rgba($color, .1); }
+  }
+  .project--#{$name} {
+    .page-title { border-color: $color; }
+    .tags li { background: rgba($color, .16); color: $color; }
+    .button { background: $color; }
   }
 }
 
-.project-card__links {
-  display: flex;
-  gap: 16px;
-  margin: 0;
+// Project and plain pages
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
   font-weight: 600;
 }
 
 .project__summary {
   font-size: 20px;
-  color: $grey-color-dark;
+  color: $ink-soft;
+  max-width: 62ch;
+  margin: 18px 0 16px;
 }
 
-.project__image {
-  display: block;
-  margin-bottom: 30px;
-  border-radius: 8px;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 20px;
+  li {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 999px;
+  }
+}
+
+.project__links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+
+.button {
+  display: inline-block;
+  padding: 10px 22px 8px;
+  border-radius: 999px;
+  color: $navy;
+  font: 700 14px $display-font;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  &:hover { color: $navy; filter: brightness(1.06); }
+}
+
+.project__image { display: block; border-radius: 14px; margin-bottom: 32px; }
+
+.prose {
+  max-width: 70ch;
+  img { border-radius: 12px; background: #fff; }
+  h2, h3 { font-family: $display-font; letter-spacing: .06em; }
+}
+
+.page .prose { margin-top: 28px; }
+
+.site-footer {
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid $navy-3;
+  color: $ink-soft;
+  font-size: 14px;
+}
+
+@media (max-width: 860px) {
+  .shell { grid-template-columns: 1fr; }
+  .sidebar__inner {
+    position: static;
+    padding: 36px 20px 28px;
+  }
+  .sidebar__avatar { width: 96px; height: 96px; span { font-size: 30px; } }
+  .sidebar__nav { flex-direction: row; margin-bottom: 8px; }
+  .main { padding-top: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-card, .project-card:hover { transition: none; transform: none; }
+  .project-card, .project-card__badge { transition: none; }
+  .project-card:hover, .project-card:hover .project-card__badge { transform: none; }
 }
