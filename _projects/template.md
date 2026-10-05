@@ -1,6 +1,7 @@
 ---
 # Copy this file to add a project. The file name becomes the page address,
 # e.g. _projects/readmission-model.md -> /projects/readmission-model/
+published: false  # this template never shows on the site; set to true or delete this line in your copy
 title: Example Project
 summary: One or two sentences about what this project does. Shown on the card.
 image:            # optional, e.g. /assets/img/example.png
